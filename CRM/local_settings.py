@@ -1,3 +1,5 @@
+
+
 """
 Django settings for CRM project.
 
@@ -12,7 +14,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,7 @@ SECRET_KEY = 'django-insecure-kw0en!xn&gzz3qr36bn$4!%d#x1w3llq8b!xbv%3wg1#iw^%%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['crm-dio1.herokuapp.com']
+ALLOWED_HOSTS = ['crm-dio1.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -82,9 +83,13 @@ WSGI_APPLICATION = 'CRM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+} 
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
